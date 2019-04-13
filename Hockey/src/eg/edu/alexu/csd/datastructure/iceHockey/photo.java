@@ -27,9 +27,9 @@ public class photo implements IPlayersFinder {
 		if (vis.contains(a)) {
 			return;
 		}
-		maxX = Math.max(2 * (j - 1) + 2, maxX);
+		maxX = Math.max(2 * (j ) + 2, maxX);
 		maxY = Math.max(2 * i, maxY);
-		minX = Math.min(2 * (j - 1), minX);
+		minX = Math.min(2 * (j ), minX);
 		minY = Math.min(2 * i - 2, minY);
 		vis.add(a);
 		area += 4;
@@ -75,9 +75,6 @@ public class photo implements IPlayersFinder {
 					return xComp;
 			}
 		});
-		for (i = 0; i < counter; i++) {
-			System.out.println(ans[i]);
-		}
 		return ans;
 	}
 
