@@ -14,7 +14,7 @@ public class photo implements IPlayersFinder {
 	private static HashSet<Point> vis = new HashSet<Point>();
 	private static void dfs(int i, int j, String[] photo, char team) {
 		Point a = new Point(i, j);
-		if (photo[i] == null) {
+		if (i>=photo.length||i<0) {
 			return;
 		}
 		if (j >= photo[1].length() || j < 0) {
@@ -28,9 +28,9 @@ public class photo implements IPlayersFinder {
 			return;
 		}
 		maxX = Math.max(2 * (j ) + 2, maxX);
-		maxY = Math.max(2 * i, maxY);
+		maxY = Math.max(2 * (i+1), maxY);
 		minX = Math.min(2 * (j ), minX);
-		minY = Math.min(2 * i - 2, minY);
+		minY = Math.min(2 * (i+1) - 2, minY);
 		vis.add(a);
 		area += 4;
 		dfs(i + 1, j, photo, team);
@@ -43,8 +43,8 @@ public class photo implements IPlayersFinder {
 	public Point[] findPlayers(String[] photo, int team, int threshold) {
 		Point[] ans = new Point[1000];
 		int counter = 0;
-		int i = 1;
-		while (photo[i] != null) {
+		int i = 0;
+		while (i<photo.length) {
 			for (int j = 0; j < photo[i].length(); j++) {
 				area = 0;
 				maxX = -1;
@@ -75,6 +75,9 @@ public class photo implements IPlayersFinder {
 					return xComp;
 			}
 		});
+		for (i = 0; i < counter; i++) {
+			System.out.println(ans[i]);
+		}
 		return ans;
 	}
 
