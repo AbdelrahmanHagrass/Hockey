@@ -75,9 +75,6 @@ public class photo implements IPlayersFinder {
 					return xComp;
 			}
 		});
-		for (i = 0; i < counter; i++) {
-			System.out.println(ans[i]);
-		}
 		return ans;
 	}
 
